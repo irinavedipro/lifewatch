@@ -266,6 +266,281 @@
             font-style: italic;
         }
 
+        .diagnostic-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(196, 30, 58, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(196, 30, 58, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(196, 30, 58, 0.7);
+            }
+        }
+
+        .diagnostic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(196, 30, 58, 0.6);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #fff 0%, #f9f6f0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #c41e3a;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-title {
+            font-size: 28px;
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+
+        .quiz-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .option:hover {
+            border-color: #c41e3a;
+            background: #fff5f5;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border-color: #c41e3a;
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #c41e3a;
+            transform: scale(1.3);
+        }
+
+        .progress-dot.completed {
+            background: #228b22;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .quiz-btn {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+        }
+
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            text-align: center;
+        }
+
+        .element-result {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .element-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+
+        .element-bar {
+            width: 100%;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .element-bar-fill {
+            height: 100%;
+            transition: width 1s ease;
+            border-radius: 15px;
+        }
+
+        .element-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .cta-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .cta-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #c41e3a;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
         @media (max-width: 768px) {
             .info-panel {
                 margin-top: 20px;
@@ -279,6 +554,49 @@
             .control-btn {
                 padding: 10px 18px;
                 font-size: 14px;
+            }
+
+            .diagnostic-btn {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .quiz-title {
+                font-size: 22px;
+            }
+
+            .quiz-subtitle {
+                font-size: 14px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+
+            .option {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .cta-title {
+                font-size: 20px;
+            }
+
+            .cta-text {
+                font-size: 14px;
+            }
+
+            .telegram-btn {
+                padding: 12px 30px;
+                font-size: 16px;
             }
         }
     </style>
@@ -356,10 +674,320 @@
             <button class="control-btn" onclick="adjustTime(2)">+2ч ⏩</button>
         </div>
 
+        <button class="diagnostic-btn" onclick="startDiagnostic()">
+            🔮 Узнать свой баланс стихий
+        </button>
+
         <div class="signature">✨ вайбкодинг от души для Тани</div>
     </div>
 
+    <!-- Diagnostic Modal -->
+    <div class="modal" id="diagnosticModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDiagnostic()">&times;</span>
+            
+            <div id="quizContent">
+                <div class="quiz-header">
+                    <h2 class="quiz-title">🔮 Диагностика баланса стихий</h2>
+                    <p class="quiz-subtitle">Ответьте на 7 вопросов, чтобы узнать состояние ваших энергий по системе У-Син</p>
+                </div>
+
+                <div class="quiz-progress" id="quizProgress"></div>
+
+                <div class="question-container" id="questionContainer"></div>
+
+                <div class="quiz-nav">
+                    <button class="quiz-btn" id="prevBtn" onclick="prevQuestion()" style="visibility: hidden;">Назад</button>
+                    <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()" disabled>Далее</button>
+                </div>
+            </div>
+
+            <div id="resultsContent" style="display: none;">
+                <!-- Results will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Как вы чувствуете себя по утрам?",
+                options: [
+                    { text: "Полон энергии, готов к новому дню", element: "wood", points: 3 },
+                    { text: "Нужно время, чтобы раскачаться", element: "earth", points: 2 },
+                    { text: "Часто просыпаюсь уставшим", element: "water", points: 1 },
+                    { text: "Тревожен и напряжен", element: "fire", points: 1 }
+                ]
+            },
+            {
+                question: "Как вы реагируете на стресс?",
+                options: [
+                    { text: "Быстро загораюсь, но быстро остываю", element: "fire", points: 3 },
+                    { text: "Держу в себе, потом срываюсь", element: "wood", points: 2 },
+                    { text: "Замыкаюсь и ухожу в себя", element: "water", points: 3 },
+                    { text: "Заедаю стресс или переживаю долго", element: "earth", points: 2 }
+                ]
+            },
+            {
+                question: "Какие проблемы со здоровьем беспокоят чаще всего?",
+                options: [
+                    { text: "Проблемы с пищеварением, вздутие", element: "earth", points: 3 },
+                    { text: "Головные боли, раздражительность", element: "wood", points: 3 },
+                    { text: "Одышка, частые простуды", element: "metal", points: 3 },
+                    { text: "Слабость в пояснице, холодные конечности", element: "water", points: 3 }
+                ]
+            },
+            {
+                question: "Ваш эмоциональный фон чаще всего:",
+                options: [
+                    { text: "Радостный, общительный", element: "fire", points: 3 },
+                    { text: "Спокойный, задумчивый", element: "earth", points: 3 },
+                    { text: "Грустный, меланхоличный", element: "metal", points: 2 },
+                    { text: "Тревожный, напряженный", element: "water", points: 2 }
+                ]
+            },
+            {
+                question: "Время суток, когда вы наиболее активны:",
+                options: [
+                    { text: "Утро (5:00-11:00)", element: "metal", points: 3 },
+                    { text: "День (11:00-17:00)", element: "fire", points: 3 },
+                    { text: "Вечер (17:00-23:00)", element: "water", points: 3 },
+                    { text: "Ночь (23:00-5:00)", element: "wood", points: 2 }
+                ]
+            },
+            {
+                question: "Ваши пищевые предпочтения:",
+                options: [
+                    { text: "Люблю острое и пряное", element: "fire", points: 2 },
+                    { text: "Предпочитаю сладкое и мучное", element: "earth", points: 2 },
+                    { text: "Тянет на кислое", element: "wood", points: 2 },
+                    { text: "Люблю соленое", element: "water", points: 2 }
+                ]
+            },
+            {
+                question: "Качество вашего сна:",
+                options: [
+                    { text: "Засыпаю быстро, сплю крепко", element: "water", points: 3 },
+                    { text: "Долго засыпаю, много думаю", element: "fire", points: 2 },
+                    { text: "Часто просыпаюсь ночью", element: "wood", points: 2 },
+                    { text: "Сон поверхностный, не высыпаюсь", element: "metal", points: 2 }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+        let elementScores = {
+            wood: 0,
+            fire: 0,
+            earth: 0,
+            metal: 0,
+            water: 0
+        };
+
+        const elementNames = {
+            wood: 'Дерево',
+            fire: 'Огонь',
+            earth: 'Земля',
+            metal: 'Металл',
+            water: 'Вода'
+        };
+
+        const elementColors = {
+            wood: '#228b22',
+            fire: '#dc143c',
+            earth: '#daa520',
+            metal: '#c0c0c0',
+            water: '#4169e1'
+        };
+
+        const elementDescriptions = {
+            wood: {
+                high: 'Ваша энергия Дерева в избытке! Вы активны, целеустремленны, но возможна раздражительность. Рекомендуется гармонизация через расслабление и работу с печенью.',
+                low: 'Энергия Дерева ослаблена. Возможна апатия, трудности с принятием решений. Необходимо укрепление печени и желчного пузыря.',
+                balanced: 'Энергия Дерева в балансе! Вы гибки, креативны и легко адаптируетесь к переменам.'
+            },
+            fire: {
+                high: 'Огонь горит ярко! Вы эмоциональны, общительны, но возможны проблемы с сердцем и перевозбуждение. Рекомендуется успокоение и охлаждение.',
+                low: 'Огонь угасает. Возможна апатия, нехватка радости в жизни. Необходимо укрепление сердца и энергии Ян.',
+                balanced: 'Огонь в гармонии! Вы радостны, харизматичны и находитесь в контакте с эмоциями.'
+            },
+            earth: {
+                high: 'Земля слишком тяжела. Возможны застои, лишний вес, проблемы с пищеварением. Рекомендуется облегчение и движение.',
+                low: 'Энергия Земли истощена. Трудности с усвоением питательных веществ, беспокойство. Необходимо укрепление селезенки.',
+                balanced: 'Земля стабильна! Вы заботливы, стабильны и хорошо заземлены.'
+            },
+            metal: {
+                high: 'Металл слишком жесток. Возможна чрезмерная критичность к себе и другим, проблемы с дыханием. Рекомендуется смягчение.',
+                low: 'Металл ослаблен. Частые простуды, слабый иммунитет, грусть. Необходимо укрепление легких.',
+                balanced: 'Металл в балансе! У вас сильный иммунитет, ясность мышления и здоровые границы.'
+            },
+            water: {
+                high: 'Вода в избытке. Возможны страхи, холод в теле, проблемы с почками. Рекомендуется согревание.',
+                low: 'Вода истощена. Слабость, выгорание, проблемы с костями. Необходимо восполнение жизненной силы Цзин.',
+                balanced: 'Вода течет спокойно! У вас сильная воля, мудрость и глубокие жизненные ресурсы.'
+            }
+        };
+
+        function startDiagnostic() {
+            document.getElementById('diagnosticModal').classList.add('active');
+            currentQuestion = 0;
+            answers = [];
+            elementScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+            renderQuestion();
+        }
+
+        function closeDiagnostic() {
+            document.getElementById('diagnosticModal').classList.remove('active');
+            // Reset quiz state
+            setTimeout(() => {
+                document.getElementById('quizContent').style.display = 'block';
+                document.getElementById('resultsContent').style.display = 'none';
+                currentQuestion = 0;
+                answers = [];
+                elementScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+            }, 300);
+        }
+
+        function renderQuestion() {
+            const question = quizQuestions[currentQuestion];
+            const progressHtml = quizQuestions.map((_, i) => 
+                `<div class="progress-dot ${i < currentQuestion ? 'completed' : i === currentQuestion ? 'active' : ''}"></div>`
+            ).join('');
+            
+            document.getElementById('quizProgress').innerHTML = progressHtml;
+
+            const optionsHtml = question.options.map((opt, i) => 
+                `<div class="option" onclick="selectOption(${i})" id="option-${i}">${opt.text}</div>`
+            ).join('');
+
+            document.getElementById('questionContainer').innerHTML = `
+                <div class="question-text">${currentQuestion + 1}. ${question.question}</div>
+                <div class="options">${optionsHtml}</div>
+            `;
+
+            if (answers[currentQuestion] !== undefined) {
+                document.getElementById(`option-${answers[currentQuestion]}`).classList.add('selected');
+                document.getElementById('nextBtn').disabled = false;
+            } else {
+                document.getElementById('nextBtn').disabled = true;
+            }
+
+            document.getElementById('prevBtn').style.visibility = currentQuestion > 0 ? 'visible' : 'hidden';
+            document.getElementById('nextBtn').textContent = currentQuestion === quizQuestions.length - 1 ? 'Результаты' : 'Далее';
+        }
+
+        function selectOption(optionIndex) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            // Add new selection
+            document.getElementById(`option-${optionIndex}`).classList.add('selected');
+            // Save answer
+            answers[currentQuestion] = optionIndex;
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function calculateResults() {
+            // Calculate scores
+            answers.forEach((answerIndex, questionIndex) => {
+                const answer = quizQuestions[questionIndex].options[answerIndex];
+                elementScores[answer.element] += answer.points;
+            });
+
+            // Normalize scores to percentage
+            const maxScore = Math.max(...Object.values(elementScores));
+            const normalizedScores = {};
+            for (let element in elementScores) {
+                normalizedScores[element] = (elementScores[element] / maxScore) * 100;
+            }
+
+            // Show results
+            showResults(normalizedScores);
+        }
+
+        function showResults(scores) {
+            document.getElementById('quizContent').style.display = 'none';
+            
+            let resultsHtml = `
+                <div class="results-container">
+                    <div class="quiz-header">
+                        <h2 class="quiz-title">🌟 Ваш баланс энергий У-Син</h2>
+                        <p class="quiz-subtitle">Вот что показала диагностика вашего состояния</p>
+                    </div>
+            `;
+
+            // Sort elements by score
+            const sortedElements = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            
+            sortedElements.forEach(([element, score]) => {
+                const status = score > 75 ? 'high' : score < 40 ? 'low' : 'balanced';
+                const description = elementDescriptions[element][status];
+                
+                resultsHtml += `
+                    <div class="element-result">
+                        <div class="element-name">${elementNames[element]}</div>
+                        <div class="element-bar">
+                            <div class="element-bar-fill" style="width: ${score}%; background: ${elementColors[element]};"></div>
+                        </div>
+                        <div class="element-description">${description}</div>
+                    </div>
+                `;
+            });
+
+            const dominantElement = sortedElements[0][0];
+            const weakElement = sortedElements[sortedElements.length - 1][0];
+
+            resultsHtml += `
+                    <div class="cta-section">
+                        <h3 class="cta-title">Готовы восстановить баланс?</h3>
+                        <p class="cta-text">
+                            Ваша доминирующая стихия — <strong>${elementNames[dominantElement]}</strong>, 
+                            а <strong>${elementNames[weakElement]}</strong> нуждается в поддержке.
+                            <br><br>
+                            Таня — эксперт по китайской медицине с 10+ летним опытом и официальный представитель Fohow в Сочи. 
+                            Она поможет подобрать индивидуальную программу восстановления баланса именно для вас!
+                        </p>
+                        <a href="https://t.me/tatasidushkina" target="_blank" class="telegram-btn">
+                            <span>✈️</span>
+                            <span>Написать Тане в Telegram</span>
+                        </a>
+                        <button class="quiz-btn" onclick="closeDiagnostic()" style="margin-top: 20px; background: white; color: #c41e3a;">
+                            Вернуться к часам
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('resultsContent').innerHTML = resultsHtml;
+            document.getElementById('resultsContent').style.display = 'block';
+
+            // Animate bars
+            setTimeout(() => {
+                document.querySelectorAll('.element-bar-fill').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+        }
+
+        // Original clock script
         const organData = {
             'gallbladder': {
                 hours: [23, 0, 1],
